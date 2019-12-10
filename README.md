@@ -48,17 +48,49 @@ All 3 subway lines intersect at Park Street, but there are no other intersection
 
 Tell the user the number of stops between stations using ruby classes.
 ```rb
+#this will create obj the line
 class Subway
   def stops_between_stations(start_line, start_station, end_line, end_station)
+  Red = Line.new
+  Red.trans(start_station,end_station,[ "South Station","Park Street","Kendall","Central","Harvard","Porter","Davis","Alewife"])
+  obj line red
+  obj line green
+  obj line orange
   end
+
 end
   
 # One line, all the stations on that line
+#this will create obj the station
 class Line
+def trans(start_station,end_station,stations)
+@start_station = start_station
+@end_station = end_station
+@stations = station
+
+st1 =Station.new(@station[@station.indexof(start_station)])
+end
+# def trans
+# st1=Station.new(station_name)
+# obj station 1
+# obj station 2
+# .
+# .
+# .
+# obj station n
+# end
+
 end
 
 # One station
+
 class Station
+  def initialize(name)
+  @name = name
+  end
+  def station_name
+  p @name
+  end
 end
 ```
 
