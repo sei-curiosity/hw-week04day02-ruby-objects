@@ -1,35 +1,3 @@
-mbta = {
-    red: [
-        "South Station",
-        "Park Street",
-        "Kendall",
-        "Central",
-        "Harvard",
-        "Porter",
-        "Davis",
-        "Alewife",
-    ],
-    green: [
-        "Government Center",
-        "Park Street",
-        "Boylston",
-        "Arlington",
-        "Copley",
-        "Hynes",
-        "Kenmore",
-    ],
-    orange: [
-        "North Station",
-        "Haymarket",
-        "Park Street",
-        "State",
-        "Downtown Crossing",
-        "Chinatown",
-        "Back Bay",
-        "Forest Hills",
-    ]
-}
-
 # One station
 class Station
     attr_reader :name
