@@ -12,21 +12,22 @@ class Subway
         start_line = instance_variable_get("@#{start_line.downcase}") 
         end_line = instance_variable_get("@#{end_line.downcase}")
        
-        startStationIndex = start_line.stations.find_index {|x| x.name == start_station }
-        endStationIndex =end_line.stations.find_index {|station| station.name == end_station }
+        start_station_index = start_line.stations.find_index {|x| x.name == start_station }
+        end_station_index =end_line.stations.find_index {|station| station.name == end_station }
 
         if start_line == end_line 
                 
-            stop_time =  startStationIndex - endStationIndex
+            stop_time =  start_station_index - end_station_index
              (stop_time).abs
 # 
         else
             # different Lines
-            tartLineParkStreetIndex = start_line.stations.find_index {|x| x.name ==  "Park Street"}
-            tripToParkStreet = (startStationIndex - tartLineParkStreetIndex).abs
-            endLineParkStreetIndex = end_line.stations.find_index {|station| station.name == "Park Street" }
-            tripToDestination = (endStationIndex - endLineParkStreetIndex).abs
-            totalTrip =tripToParkStreet + tripToDestination
+            start_line_park_street_index = start_line.stations.find_index {|x| x.name ==  "Park Street"}
+            trip_to_park_street = (start_station_index - start_line_park_street_index).abs
+            end_line_park_street_index = end_line.stations.find_index {|station| station.name == "Park Street" }
+            trip_to_destination = (end_station_index - end_line_park_street_index).abs
+            total_trip = trip_to_park_street + trip_to_destination
+            
         end
 
     end
@@ -35,7 +36,6 @@ end
     
 class Line
     attr_reader :stations, :name
-
     def initialize(name, stations)
         @name = name
         @stations = stations.map { |station| Station.new(station)}
