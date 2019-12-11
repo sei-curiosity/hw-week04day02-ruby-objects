@@ -163,14 +163,14 @@ end
 
 
 subways = Subway.new()
-# subways.stops_between_stations('Red', 'South Station', 'Red', 'Central') # 3 stops
-# puts "*" * 30
-# subways.stops_between_stations("Red", "South Station", "Green", "Kenmore") # 6 stops
-# puts "*" * 30
-# subways.stops_between_stations("Red", "Alewife", "Red", "Alewife") # 0 stops
-# puts "*" * 30
+subways.stops_between_stations('Red', 'South Station', 'Red', 'Central') # 3 stops
+puts "*" * 30
+subways.stops_between_stations("Red", "South Station", "Green", "Kenmore") # 6 stops
+puts "*" * 30
+subways.stops_between_stations("Red", "Alewife", "Red", "Alewife") # 0 stops
+puts "*" * 30
 subways.stops_between_stations('Red', 'South Station', 'orange', 'Forest Hills') # 3 stops
 
 
 # with input -> loop_input = true which will run infinite loop and ask user
-# subways = Subway.new(true)
+subways = Subway.new(true)
