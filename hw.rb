@@ -142,21 +142,21 @@ my_subway = Subway.new
 #p my_subway.green.name
 #my_subway.green.stations.length.times {|i| puts my_subway.green.stations[i].name}
 
-my_subway.stops_between_stations("Red","South Station","Red","Davis")
+#my_subway.stops_between_stations("Red","South Station","Red","Davis")
 # my_subway.stops_between_stations("Red","Alewife","Red","Alewife")
 # my_subway.stops_between_stations("Red","Alewife","Red","South Station")
 # my_subway.stops_between_stations("Red","South Station","Green","Kenmore")
 
 
-# trying the double bonus
+trying the double bonus
 
-# puts "Enter the start line"
-# s_line = gets.chomp
-# puts "Enter the start station"
-# s_station = gets.chomp
-# puts "Enter the end line"
-# e_line = gets.chomp
-# puts "Enter the end station"
-# e_station = gets.chomp
+puts "Enter the start line"
+s_line = gets.chomp
+puts "Enter the start station"
+s_station = gets.chomp
+puts "Enter the end line"
+e_line = gets.chomp
+puts "Enter the end station"
+e_station = gets.chomp
 
-# my_subway.stops_between_stations(s_line, s_station, e_line, e_station)
+my_subway.stops_between_stations(s_line, s_station, e_line, e_station)
