@@ -126,14 +126,14 @@ class Subway < Input
         puts "start from #{start_line.stations[start_index].name} in Line #{start_line.name}"
 
         old_station = start_line.stations[start_index].name
-        (start_index + 1..end_index).each do |n|
+        (start_index + 1..end_index + 1).each do |n|
             station = start_line.stations[n]
 
             if start_line == end_line
                 puts "You moved From #{old_station} to #{station.name}"
                 old_station = station.name
             else
-                if station.name != "Parl Street"
+                if station.name != "Park Street"
                     puts "You moved From #{old_station} to #{station.name}"
                     old_station = station.name
                 end
@@ -142,7 +142,8 @@ class Subway < Input
                     puts "changed line from #{start_line.name} to #{end_line.name} at Park Street"
                     old_station = "Park Street"
 
-                    (start_index + 1..end_index).each do |j|
+                    increase = end_line.name == 'orange' ? 2 : 1
+                    (start_index + increase..end_index).each do |j|
                         end_station = end_line.stations[j]
                         if end_station.name != "Park Street"
                             puts "You moved From #{old_station} to #{end_station.name}"
@@ -162,12 +163,14 @@ end
 
 
 subways = Subway.new()
-subways.stops_between_stations('Red', 'South Station', 'Red', 'Central') # 3 stops
-puts "*" * 30
-subways.stops_between_stations("Red", "South Station", "Green", "Kenmore") # 6 stops
-puts "*" * 30
-subways.stops_between_stations("Red", "Alewife", "Red", "Alewife") # 0 stops
-puts "*" * 30
+# subways.stops_between_stations('Red', 'South Station', 'Red', 'Central') # 3 stops
+# puts "*" * 30
+# subways.stops_between_stations("Red", "South Station", "Green", "Kenmore") # 6 stops
+# puts "*" * 30
+# subways.stops_between_stations("Red", "Alewife", "Red", "Alewife") # 0 stops
+# puts "*" * 30
+subways.stops_between_stations('Red', 'South Station', 'orange', 'Forest Hills') # 3 stops
+
 
 # with input -> loop_input = true which will run infinite loop and ask user
-subways = Subway.new(nil, true)
+# subways = Subway.new(true)
