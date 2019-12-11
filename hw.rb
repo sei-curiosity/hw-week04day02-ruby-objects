@@ -17,6 +17,8 @@ class Subway
         @first_station_stops
         @last_station_stops
 
+        puts "You must travel through the following stops on the #{@start_line.name.capitalize} line:"
+
         if @start_line == @end_line 
             
                 #if @start_line == @red
@@ -27,22 +29,29 @@ class Subway
             if start_station == end_station
                     @stops = 0
                 else
+                
+                
                 @start_line.stations.length.times{|i| 
                       # I am dealing with the objects of type station
 
                 if @start_line.stations[i].name == start_station
                     @first_index = i
                     #puts @first_index
+                    puts "Going through #{@start_line.stations[i].name}"
                    elsif @start_line.stations[i].name == end_station
                     @last_index = i
                     #puts @last_index
                 end
                 
+                puts "and #{@start_line.stations[i].name}"
+
                 } # end looping through the array of objects type station
                 @subtraction = @last_index - @first_index
                 @stops = @subtraction.abs()
                 
                 
+                puts "Ending at #{@start_line.stations[@last_index].name}"
+
             end 
             puts @stops
                 #end
@@ -133,7 +142,7 @@ my_subway = Subway.new
 #p my_subway.green.name
 #my_subway.green.stations.length.times {|i| puts my_subway.green.stations[i].name}
 
-#my_subway.stops_between_stations("Red","South Station","Red","Davis")
+my_subway.stops_between_stations("Red","South Station","Red","Davis")
 # my_subway.stops_between_stations("Red","Alewife","Red","Alewife")
 # my_subway.stops_between_stations("Red","Alewife","Red","South Station")
 # my_subway.stops_between_stations("Red","South Station","Green","Kenmore")
@@ -141,13 +150,13 @@ my_subway = Subway.new
 
 # trying the double bonus
 
-puts "Enter the start line"
-s_line = gets.chomp
-puts "Enter the start station"
-s_station = gets.chomp
-puts "Enter the end line"
-e_line = gets.chomp
-puts "Enter the end station"
-e_station = gets.chomp
+# puts "Enter the start line"
+# s_line = gets.chomp
+# puts "Enter the start station"
+# s_station = gets.chomp
+# puts "Enter the end line"
+# e_line = gets.chomp
+# puts "Enter the end station"
+# e_station = gets.chomp
 
-my_subway.stops_between_stations(s_line, s_station, e_line, e_station)
+# my_subway.stops_between_stations(s_line, s_station, e_line, e_station)
