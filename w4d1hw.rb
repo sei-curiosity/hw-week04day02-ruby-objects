@@ -1,51 +1,63 @@
-Subwayline = {
+class Subway
+        attr_reader :red, :green, :orange
+    
+        def initialize
+            @red = Line.new("red", ["South Station", "Park Street", "Kendall", "Central", "Harvard", "Porter", "Davis", "Alewife"])
+            @green = Line.new("green", ["Government Center", "Park Street", "Boylston", "Arlington", "Copley", "Hynes", "Kenmore"])
+            @orange = Line.new("orange", ["North Station", "Haymarket", "Park Street", "State", "Downtown Crossing", "Chinatown", "Back Bay", "Forest Hills"])
+        end
+    
+        def stops_between_stations(start_line, start_station, end_line, end_station)
+            # Convert string to instance variable
+            # https://stackoverflow.com/questions/29410143/convert-string-to-instance-variables
+            start_line = instance_variable_get("@#{start_line.downcase}")
+            end_line = instance_variable_get("@#{end_line.downcase}")
 
-    Red: ["South Station",
-         "Park Street",
-         "Kendall",
-         "Central", 
-         "Harvard",
-         "Porter",
-         "Davis",
-         "Alewife"],
+            
+            if start_line === end_line
+                sl= start_line.stations.index{|station|satation.name==start_station}
+            el =end_line.stations.index {|station| station.name ==end_station}
 
-    Green: ["Government Center",
-            "Park Street", 
-            "Boylston", 
-            "Arlington", 
-            "Copley", 
-            "Hynes", 
-            "Kenmore"],
+                stops =(sl-el).abs
 
-    Orange: ["North Station", 
-             "Haymarket", 
-             "Park Street", 
-             "State", 
-             "Downtown Crossing", 
-             "Chinatown", 
-             "Back Bay", 
-             "Forest Hills"]
+                puts "Same Lines stops =#{stops} "
 
- }
+                
+            else
+                
+                s_parksl= start_line.stations.index{ |station| station.name =="park street"}
+                s_parkel=end_line.stations.index{ |station| station.name =="park street"}
 
- def stopsBetweenStations(startLine, startStation, endLine, endStation)
+                p1 = (sl-s_parksl).abs
+                p2 =(el-s_parkel).abs
 
- startStationIndex = Subwayline[startLine.to_sym].index(startStation)
- endStationIndex = Subwayline[endLine.to_sym].index(endStation)
+                t_stops=p1+p2
+                puts "different Lines stops = #{t_stops}"
+            end
+    
+        end
+    
+    end
+        
+    class Line
+        attr_reader :stations, :name
+    
+        def initialize(name, stations)
+            @name = name
+            @stations = stations.map { |station| Station.new(station)}
+        end
 
-
- 
- if(startLine == endLine) 
- return (startStationIndex - endStationIndex)
- end
-
- startLineParkStreetIndex = Subwayline[startLine.to_sym].index("Park Street")
- tripToParkStreet = (startStationIndex - startLineParkStreetIndex)
-  
- endLineParkStreetIndex = Subwayline[endLine.to_sym].index("Park Street")
- 
- tripToDestination = (endStationIndex - endLineParkStreetIndex)
- 
- totalTrip = tripToParkStreet + tripToDestination
-end
-p stopsBetweenStations('startLine', 'startStation', 'endLine', 'endStation')
+    end
+     
+    
+    class Station
+        attr_reader :name
+    
+        def initialize(name)
+            @name = name
+        end
+    
+    end
+    
+    mbta = Subway.new
+    mbta.stops_between_stations('Red', 'Alewife', 'Red', 'Alewife')
